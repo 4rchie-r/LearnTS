@@ -1,0 +1,72 @@
+[
+    {
+        "question": "What is TypeScript?",
+        "options": ["A superset of JavaScript", "A completely different language", "A JavaScript library"],
+        "answer": "A superset of JavaScript"
+    },
+    {
+        "question": "Which keyword is used to declare a variable in TypeScript?",
+        "options": ["var", "let", "const"],
+        "answer": "let"
+    },
+    {
+        "question": "How do you define a type for a variable in TypeScript?",
+        "options": ["let variable: type;", "let variable = type;", "type variable: type;"],
+        "answer": "let variable: type;"
+    },
+    {
+        "question": "Which TypeScript feature allows you to define a custom type?",
+        "options": ["Interface", "Array", "Function"],
+        "answer": "Interface"
+    },
+    {
+        "question": "What is the correct way to define an array of strings in TypeScript?",
+        "options": ["let arr: string[];", "let arr: Array<string>;", "Both"],
+        "answer": "Both"
+    },
+    {
+        "question": "How do you specify that a function parameter is optional in TypeScript?",
+        "options": ["function myFunc(param?: type) {}", "function myFunc(param: type?) {}", "function myFunc(param: type = undefined) {}"],
+        "answer": "function myFunc(param?: type) {}"
+    },
+    {
+        "question": "What does the 'any' type represent in TypeScript?",
+        "options": ["A type that can be any value", "A type that represents a specific value", "A type that cannot be assigned"],
+        "answer": "A type that can be any value"
+    },
+    {
+        "question": "Which TypeScript keyword is used to create a new type that is a combination of existing types?",
+        "options": ["Union", "Intersection", "Tuple"],
+        "answer": "Intersection"
+    },
+    {
+        "question": "How do you define an enum in TypeScript?",
+        "options": ["enum MyEnum { A, B, C }", "type MyEnum = { A, B, C }", "enum MyEnum = [A, B, C]"],
+        "answer": "enum MyEnum { A, B, C }"
+    },
+    {
+        "question": "Which operator is used for type assertion in TypeScript?",
+        "options": ["as", "assert", "type"],
+        "answer": "as"
+    },
+    {
+        "question": "What is the default type for a variable in TypeScript if not specified?",
+        "options": ["any", "unknown", "void"],
+        "answer": "any"
+    },
+    {
+        "question": "How do you define a function type in TypeScript?",
+        "options": ["type FunctionType = (param: type) => returnType;", "type FunctionType = (param: type): returnType;", "type FunctionType = function(param: type): returnType;"],
+        "answer": "type FunctionType = (param: type) => returnType;"
+    },
+    {
+        "question": "How do you make a class property private in TypeScript?",
+        "options": ["private propertyName;", "protected propertyName;", "public propertyName;"],
+        "answer": "private propertyName;"
+    },
+    {
+        "question": "Which type in TypeScript represents a value that may be either a number or a string?",
+        "options": ["number | string", "string & number", "number[] | string[]"],
+        "answer": "number | string"
+    }
+]

@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Learn TypeScript</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div id="homepage">
+        <header>
+            <h1>Introduction to TypeScript</h1>
+        </header>
+
+        <section class="educational-content">
+            <h2>What is TypeScript?</h2>
+            <p>TypeScript is a typed superset of JavaScript that compiles down to plain JavaScript. It adds optional static types to JavaScript, enabling better code quality, tooling, and scalability.</p>
+        
+            <h2>Why Use TypeScript?</h2>
+            <ul>
+                <li><strong>Static Typing:</strong> TypeScript catches errors at compile time rather than at runtime.</li>
+                <li><strong>Tooling:</strong> Improved IDE support with autocompletion and type checking.</li>
+                <li><strong>Scalability:</strong> Especially useful for large-scale applications, enforcing code consistency and maintainability.</li>
+            </ul>
+        
+            <h2>Core Features of TypeScript</h2>
+        
+            <h3>1. Type Annotations</h3>
+            <p>In TypeScript, you can explicitly specify types for variables, function parameters, and return types.</p>
+            <pre><code class="language-typescript">
+        let isDone: boolean = false;
+        let count: number = 42;
+        let name: string = "John";
+        
+        // Arrays and Tuples
+        let numbers: number[] = [1, 2, 3];
+        let tuple: [string, number] = ["hello", 10];
+            </code></pre>
+        
+            <h3>2. Enums</h3>
+            <p>Enums allow you to define a set of named constants. They are especially useful when dealing with sets of related values.</p>
+            <pre><code class="language-typescript">
+        enum Direction {
+            Up,
+            Down,
+            Left,
+            Right
+        }
+        let dir: Direction = Direction.Up;
+            </code></pre>
+        
+            <h3>3. Functions and Return Types</h3>
+            <p>In TypeScript, you can define the types for function parameters and return values.</p>
+            <pre><code class="language-typescript">
+        function add(x: number, y: number): number {
+            return x + y;
+        }
+        
+        // Optional parameters and default values
+        function greet(name: string, greeting?: string): string {
+            return `${greeting || "Hello"}, ${name}!`;
+        }
+            </code></pre>
+        
+            <h3>4. Type Inference</h3>
+            <p>TypeScript can infer types based on the initial value assigned, meaning you don't always need to explicitly declare types.</p>
+            <pre><code class="language-typescript">
+        let message = "Hello!";  // inferred as string
+        let count = 100;         // inferred as number
+            </code></pre>
+        
+            <h3>5. Union Types and Type Aliases</h3>
+            <p>Union types allow a variable to hold more than one type, and type aliases can be used to give a type a name.</p>
+            <pre><code class="language-typescript">
+        // Union type
+        let id: string | number;
+        id = "abc";  // valid
+        id = 123;    // also valid
+        
+        // Type alias
+        type UserID = string | number;
+        let userID: UserID = 101;
+            </code></pre>
+        
+            <h3>6. Interfaces</h3>
+            <p>Interfaces describe the shape of an object, helping enforce structure across your codebase.</p>
+            <pre><code class="language-typescript">
+        interface User {
+            name: string;
+            age?: number;  // optional property
+        }
+        
+        let user: User = {
+            name: "Alice",
+            age: 25
+        };
+        
+        // Optional properties example:
+        let anotherUser: User = {
+            name: "Bob"  // age is optional here
+        };
+            </code></pre>
+        
+            <h3>7. Classes and Access Modifiers</h3>
+            <p>TypeScript supports object-oriented programming with classes, inheritance, and access modifiers such as `public`, `private`, and `protected`.</p>
+            <pre><code class="language-typescript">
+        class Animal {
+            private name: string;
+            
+            constructor(name: string) {
+                this.name = name;
+            }
+        
+            public move(distance: number): void {
+                console.log(`${this.name} moved ${distance} meters.`);
+            }
+        }
+        
+        class Dog extends Animal {
+            public bark(): void {
+                console.log("Woof! Woof!");
+            }
+        }
+        
+        let dog = new Dog("Rex");
+        dog.bark();
+        dog.move(10);
+            </code></pre>
+        
+            <h3>8. Generics</h3>
+            <p>Generics allow you to create reusable components that work with a variety of data types.</p>
+            <pre><code class="language-typescript">
+        function identity<T>(arg: T): T {
+            return arg;
+        }
+        
+        let num = identity<number>(10);  // T is number
+        let str = identity<string>("hello");  // T is string
+            </code></pre>
+        
+            <h3>9. Modules (Import/Export)</h3>
+            <p>TypeScript supports modular code through the use of `import` and `export`, allowing you to split code into reusable components.</p>
+            <pre><code class="language-typescript">
+        // math.ts
+        export function add(x: number, y: number): number {
+            return x + y;
+        }
+        
+        // app.ts
+        import { add } from './math';
+        
+        console.log(add(5, 3));
+            </code></pre>
+        
+            <h2>Setting Up TypeScript</h2>
+            <p>To install TypeScript globally, run:</p>
+            <pre><code class="language-bash">
+        npm install -g typescript
+            </code></pre>
+            <p>Then create a TypeScript file and compile it to JavaScript using the command:</p>
+            <pre><code class="language-bash">
+        tsc myfile.ts
+            </code></pre>
+        </section>
+        <section class="educational-content">
+            <h2>TypeScript Basics Video</h2>
+            <p>Watch this video to get a quick introduction to the basics of TypeScript:</p>
+            <div class="video-wrapper">
+                <iframe width="560" height="315" src="https://www.youtube.com/embed/V78lbWLKMxo" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            </div>
+        </section>
+        
+        <footer>
+            <p>Take this test when you feel like you have mastered the art of Typescript!</p>
+            <a id="quizLink" href="quiz/quiz.html">Take the TypeScript Quiz</a>
+        </footer>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
