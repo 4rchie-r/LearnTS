@@ -1,22 +1,23 @@
 document.addEventListener('DOMContentLoaded', () => {
     const resultsContainer = document.querySelector('.results-container');
     const nextButton = document.getElementById('nextButton');
+    const returnToLearningButton = document.getElementById('returnToLearning');
+    const retakeQuizButton = document.getElementById('retakeQuiz');
     const scoreElement = document.getElementById('score');
     const totalQuestionsElement = document.getElementById('totalQuestions');
-    
+
     let currentQuestionIndex = 0;
     let results = [];
-    
-    // fetch quiz questions and answers from quiz.json
+
     fetch('quiz.json')
         .then(response => response.json())
         .then(data => {
-            console.log('Quiz data fetched:', data); // line for debuggin
+            console.log('Quiz data fetched:', data); 
             results = data.map(question => ({
                 question: question.question,
                 options: question.options,
                 correctAnswer: question.answer,
-                userAnswer: null // placeholder
+                userAnswer: null 
             }));
             initializeQuiz();
         })
@@ -32,14 +33,20 @@ document.addEventListener('DOMContentLoaded', () => {
         });
 
         nextButton.addEventListener('click', () => {
-            if (currentQuestionIndex < results.length) {
+            if (currentQuestionIndex < results.length - 1) {
                 currentQuestionIndex++;
-                if (currentQuestionIndex < results.length) {
-                    showQuestion(currentQuestionIndex);
-                } else {
-                    displayFinalResults();
-                }
+                showQuestion(currentQuestionIndex);
+            } else {
+                displayFinalResults();
             }
+        });
+
+        returnToLearningButton.addEventListener('click', () => {
+            window.location.href = '../index.html'; 
+        });
+
+        retakeQuizButton.addEventListener('click', () => {
+            location.reload();
         });
     }
 
@@ -50,7 +57,7 @@ document.addEventListener('DOMContentLoaded', () => {
             return;
         }
 
-        resultsContainer.innerHTML = ''; // clearing previous content
+        resultsContainer.innerHTML = ''; 
 
         const questionElement = document.createElement('div');
         questionElement.className = 'results-item';
@@ -76,43 +83,29 @@ document.addEventListener('DOMContentLoaded', () => {
             optionsList.appendChild(optionElement);
         });
 
-        nextButton.style.display = 'none'; // hide next button until an option is selected
+        nextButton.style.display = 'none'; 
     }
 
     function displayFinalResults() {
         resultsContainer.innerHTML = ''; 
 
-        let resultIndex = 0;
-        function showResult() {
-            if (resultIndex >= results.length) {
-                nextButton.style.display = 'none'; 
-                return;
-            }
-
-            const result = results[resultIndex];
+        results.forEach((result, index) => {
             const resultElement = document.createElement('div');
             resultElement.className = 'results-item';
             resultElement.innerHTML = `
-                <h5>Question ${resultIndex + 1}: ${result.question}</h5>
+                <h5>Question ${index + 1}: ${result.question}</h5>
                 <p>Your Answer: <span class="answer">${result.userAnswer || 'Not answered'}</span></p>
                 <p>Correct Answer: <span class="answer">${result.correctAnswer}</span></p>
             `;
             resultsContainer.appendChild(resultElement);
+        });
 
-            // Show next result
-            nextButton.addEventListener('click', () => {
-                resultElement.style.display = 'none'; // hide current result
-                resultIndex++;
-                showResult(); // show next result
-            });
-        }
-
-        // display first result
-        showResult();
-
-        // show final score
         const correctAnswersCount = results.filter(result => result.userAnswer === result.correctAnswer).length;
         scoreElement.textContent = correctAnswersCount;
         totalQuestionsElement.textContent = results.length;
+
+        nextButton.style.display = 'none'; 
+        returnToLearningButton.style.display = 'inline-block';
+        retakeQuizButton.style.display = 'inline-block';
     }
 });
