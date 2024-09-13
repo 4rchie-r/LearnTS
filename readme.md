@@ -36,5 +36,5 @@ The project is structured as follows:
 ## Acknowledgments
 
 - Inspired by a passion for TypeScript and interactive learning experiences.
-
+- Thanks to School Of Code for the experience on the Hackathon.
 ---
